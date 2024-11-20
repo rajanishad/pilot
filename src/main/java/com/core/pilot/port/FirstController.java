@@ -2,11 +2,13 @@ package com.core.pilot.port;
 
 
 import com.core.pilot.adapter.model.FirstDocument;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,10 +25,13 @@ public class FirstController {
     DocumentServiceI documentServiceI;
 
     @GetMapping("/test")
-    public String firstGet(){
+    public String firstGet(HttpServletRequest httpServletRequest){
         log.info("received request on firstGet");
-        return "test";
+        return "test"+httpServletRequest.getSession().getId();
     }
+
+
+
     @GetMapping("/test2")
 //    @PreAuthorize("hasRole('allow_test')")
     public String firstGet2(){
@@ -38,6 +43,10 @@ public class FirstController {
     public List<FirstDocument> getAllFirstDocument(){
         log.info("received request on getAllFirstDocument");
         return documentServiceI.getAllFirstDocuments();
+    }
+    @GetMapping("/csrf-token")
+    public CsrfToken getCsrfToken(HttpServletRequest httpServletRequest){
+        return (CsrfToken) httpServletRequest.getAttribute("_csrf");
     }
 
     @PostMapping("/createFirstDocument")
