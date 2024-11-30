@@ -17,7 +17,7 @@ public class Datasource {
 
     @Bean
     public DataSource dataSourcePostgres(){
-        log.info("creating datasource bean");
+        log.info("creating postgres datasource bean");
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
         config.setUsername("springboot");

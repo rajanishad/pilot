@@ -38,6 +38,12 @@ public class FirstController {
         log.info("received request on firstGet2");
         return "test";
     }
+    @GetMapping("/test3")
+//    @PreAuthorize("hasRole('allow_test')")
+    public String firstGet3(){
+        log.info("received request on firstGet3");
+        return "test";
+    }
 
     @GetMapping("/getAllFirstDocument")
     public List<FirstDocument> getAllFirstDocument(){
