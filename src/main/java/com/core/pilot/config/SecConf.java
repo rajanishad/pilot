@@ -65,20 +65,20 @@ public class SecConf {
         return daoAuthenticationProvider;
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        log.info("userDetailsService");
-        UserDetails user1 = User.withDefaultPasswordEncoder()
-                .username("raja")
-                .password("raja")
-                .roles("USER")
-                .build();
-        UserDetails user2 = User.withDefaultPasswordEncoder()
-                .username("raja2")
-                .password("raja2")
-                .roles("ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user1, user2);
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        log.info("userDetailsService");
+//        UserDetails user1 = User.withDefaultPasswordEncoder()
+//                .username("raja")
+//                .password("raja")
+//                .roles("USER")
+//                .build();
+//        UserDetails user2 = User.withDefaultPasswordEncoder()
+//                .username("raja2")
+//                .password("raja2")
+//                .roles("ADMIN")
+//                .build();
+//        return new InMemoryUserDetailsManager(user1, user2);
+//    }
 
 }
